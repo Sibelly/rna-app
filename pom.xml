@@ -10,12 +10,10 @@
 	</properties>
 
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>org.cytoscape.ufms.facom</groupId>
+	<groupId>org.cytoscape.rna</groupId>
 	<artifactId>rna-app</artifactId>
-	<version>3.3.0</version>
-
-			<name>${bundle.symbolicName} [${bundle.namespace}]</name>
-	
+	<name>RNA</name>	
+	<version>1.0.1</version>
 	<packaging>bundle</packaging>
 
 	<build>
