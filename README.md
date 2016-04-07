@@ -27,6 +27,6 @@ Here goes an example of matrix of the **yeast cell-cycle network**:
 
 Then the visualization of that matrix is generated as a network in cytoscape.
 
-Besides that visualization we also generate the states transition network, that has the 2^n nodes, *so is possible that cytoscape will crash for regulatory networks with more than 20 nodes* (2^20), the layout of the network also affects the performance, by default the layout selected is *Hierarchical Layout*. Each basin of attraction of the network has a different color.
+Besides that visualization we also generate the states transition network, that has the 2^n nodes, *so is possible that cytoscape will crash for regulatory networks with more than 20 nodes* (2^20), the layout of the network also affects the performance, by default the layout selected is *Grid Layout*. Each basin of attraction of the network has a different color.
 
 And the app computes some informations from the states transition network like the **entropy** and the **derrida coefficient**. These informations is shown in the results panel.
