@@ -65,7 +65,7 @@ public class CyActivator extends AbstractCyActivator {
 		rnaUtil = new RNAUtil(swingApplication);
 		
 		closeRNAPanels();
-		
+
 		RNACreateNetworkAction createNetworkAction = new RNACreateNetworkAction("Generate/Analyse Network", applicationManager, swingApplication, cyNetworkViewManagerRef, cyNetworkManagerServiceRef, cyNetworkFactoryServiceRef, cyNetworkNamingServiceRef, cyNetworkViewFactoryRef, dialogTaskManager, vmmServiceRef, cyLayoutManager, vmfFactoryContinuous, vmfFactoryDiscrete, serviceRegistrar, swingApplication, taskManager, rnaUtil);
 		RNAAboutAction aboutAction = new RNAAboutAction("About", applicationManager, swingApplication, cyNetworkViewManagerRef, openBrowser, rnaUtil);
 		
@@ -88,7 +88,6 @@ public class CyActivator extends AbstractCyActivator {
 		
 		registerService(bundleContext, closeTaskFactory, TaskFactory.class, closeTaskFactoryProps);
 		registerService(bundleContext, closeTaskFactory, NetworkAboutToBeDestroyedListener.class, new Properties());
-		
 	}
 	
 	@Override

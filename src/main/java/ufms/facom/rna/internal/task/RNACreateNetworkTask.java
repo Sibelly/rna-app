@@ -110,6 +110,7 @@ public class RNACreateNetworkTask extends AbstractTask {
 	
 	@SuppressWarnings({ "rawtypes", "unused" })
 	public void run(TaskMonitor taskMonitor) {
+		
 		if (taskMonitor == null){
 			throw new IllegalStateException("Task Monitor is not set.");
 		}
@@ -391,8 +392,8 @@ public class RNACreateNetworkTask extends AbstractTask {
 			VisualStyle styleRedeNodes = visualMappingManager.getVisualStyle(viewRedeNodes);
 		
 			//Adicionando a cor das arestas na redeNodes
-			edgeColorDiscrete.putMapValue(ENRICH_NEG, Color.MAGENTA);
-			edgeColorDiscrete.putMapValue(ENRICH_POS, Color.GREEN);
+			edgeColorDiscrete.putMapValue(ENRICH_NEG, Color.GREEN);
+			edgeColorDiscrete.putMapValue(ENRICH_POS, Color.BLUE);
 			styleRedeNodes.addVisualMappingFunction(edgeColorDiscrete);
 			styleRedeNodes.addVisualMappingFunction(nodeColorContinuous); 
 			visualMappingManager.addVisualStyle(styleRedeNodes);
@@ -437,7 +438,7 @@ public class RNACreateNetworkTask extends AbstractTask {
 			}
 			
 			//Aplicando o layout da redeEstados
-			layout = cyLayoutManager.getLayout("hierarchical");
+			layout = cyLayoutManager.getLayout("grid");
 			dialogTaskManager.execute(layout.createTaskIterator(viewRedeEstados, layout.createLayoutContext(), CyLayoutAlgorithm.ALL_NODE_VIEWS, null));
 			VisualStyle styleRedeEstados = visualMappingManager.getVisualStyle(viewRedeEstados);
 			styleRedeEstados.addVisualMappingFunction(nodeColorContinuous);

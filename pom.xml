@@ -13,7 +13,7 @@
 	<groupId>org.cytoscape.rna</groupId>
 	<artifactId>rna-app</artifactId>
 	<name>RNA</name>	
-	<version>1.0.2</version>
+	<version>1.0.3</version>
 	<packaging>bundle</packaging>
 
 	<build>
