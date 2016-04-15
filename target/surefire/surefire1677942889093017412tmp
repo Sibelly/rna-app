@@ -1,0 +1,5 @@
+#surefire
+#Mon Mar 14 15:05:00 AMT 2016
+user.dir=/home/boogiepop/workspace/rna-app
+localRepository=/home/boogiepop/.m2/repository
+basedir=/home/boogiepop/workspace/rna-app
