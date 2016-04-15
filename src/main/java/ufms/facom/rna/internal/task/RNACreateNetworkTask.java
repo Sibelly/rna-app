@@ -346,7 +346,7 @@ public class RNACreateNetworkTask extends AbstractTask {
 		/*Fiz isso para calcular o coeficiente de derrida por padrão com a metade do numero de estados da rede de transição de estados*/
 		setNumIteracoes(qntEstados/2);
 		double derrida = derridaCoefficient(numGenes, qntEstados, matrizIni);
-		currentParams.setInteractionNumber((qntEstados/2));
+		currentParams.setSamplingRate((qntEstados/2));
 		currentParams.setDerridaCoefficient(derrida);
 		
 		rnaUtil.addResult(redeNodes.getSUID());

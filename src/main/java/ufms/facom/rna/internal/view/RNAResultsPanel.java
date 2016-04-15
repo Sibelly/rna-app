@@ -68,7 +68,7 @@ public class RNAResultsPanel extends JPanel implements CytoPanelComponent {
 	private Double derridaCoefficient;
 	private int numGenes;
 	private int qntEstados;
-	private int interactionNumber;
+	private int samplingRate;
 	private NumberFormat formatter;  
 	
 
@@ -79,8 +79,8 @@ public class RNAResultsPanel extends JPanel implements CytoPanelComponent {
 	private JLabel entropyLbl;
 	private JLabel derridaLbl;
 	//private JFormattedTextField derridaTxt;
-	private JLabel interacionNumberLbl;
-	private JFormattedTextField interacionNumberTxt;
+	private JLabel samplingRateLbl;
+	private JFormattedTextField samplingRateTxt;
 	
 	public RNAResultsPanel(String nomeArquivo, int resultId, double entropy, double maxEntropy, Map<Integer, Integer> tamanhosAtratores, Map<Integer, Integer> tamanhosBacias, double derridaCoefficient, ArrayList<Integer> matrizIni, int numGenes, int qntEstados, RNAUtil rnaUtil, CySwingApplication swingApplication, RNADiscardResultAction discardResultAction) {
 		this.title = nomeArquivo;
@@ -97,8 +97,8 @@ public class RNAResultsPanel extends JPanel implements CytoPanelComponent {
 		this.rnaUtil = rnaUtil;
 		this.discardResultAction = discardResultAction;
 		this.resultsPnl = new ResultsPanel();
-		this.interactionNumber = (qntEstados/2);
-		rnaUtil.getCurrentParameters().setInteractionNumber((qntEstados/2));
+		this.samplingRate = (qntEstados/2);
+		rnaUtil.getCurrentParameters().setSamplingRate((qntEstados/2));
 		
 		formatter = new DecimalFormat("#0.00");
 		formatter.setParseIntegerOnly(true);
@@ -297,11 +297,11 @@ public class RNAResultsPanel extends JPanel implements CytoPanelComponent {
 										"less than 0: frozen behavior</html>");
 			//derridaLbl.setToolTipText("<html>The derrida coefficient calculates to the States Transition Network.</html>");
 			
-			/*Number of Interactions Label*/
-			interacionNumberLbl = new JLabel("Number of Interactions: ");
-			interacionNumberLbl.setMinimumSize(getInteractionNumberTxt().getMinimumSize());
-			interacionNumberLbl.setLabelFor(getInteractionNumberTxt());
-			interacionNumberLbl.setToolTipText(getInteractionNumberTxt().getToolTipText());
+			/*Sampling Rate Label*/
+			samplingRateLbl = new JLabel("Sampling Rate: ");
+			samplingRateLbl.setMinimumSize(getSamplingRateLblTxt().getMinimumSize());
+			samplingRateLbl.setLabelFor(getSamplingRateLblTxt());
+			samplingRateLbl.setToolTipText(getSamplingRateLblTxt().getToolTipText());
 			
 			// The Derrida button
 			final JButton derridaButton = new JButton("Calculate Derrida Coefficient");
@@ -318,8 +318,8 @@ public class RNAResultsPanel extends JPanel implements CytoPanelComponent {
 							.addComponent(maxEntropyLbl)
 							.addComponent(entropyLbl)
 							.addComponent(derridaLbl)
-							.addComponent(interacionNumberLbl, PREFERRED_SIZE, DEFAULT_SIZE, PREFERRED_SIZE)
-							.addComponent(getInteractionNumberTxt(), PREFERRED_SIZE, DEFAULT_SIZE, PREFERRED_SIZE)
+							.addComponent(samplingRateLbl, PREFERRED_SIZE, DEFAULT_SIZE, PREFERRED_SIZE)
+							.addComponent(getSamplingRateLblTxt(), PREFERRED_SIZE, DEFAULT_SIZE, PREFERRED_SIZE)
 							.addComponent(derridaButton, PREFERRED_SIZE, DEFAULT_SIZE, PREFERRED_SIZE)
 					)
 			);
@@ -328,8 +328,8 @@ public class RNAResultsPanel extends JPanel implements CytoPanelComponent {
 							.addComponent(maxEntropyLbl)
 							.addComponent(entropyLbl)
 							.addComponent(derridaLbl)
-							.addComponent(interacionNumberLbl, PREFERRED_SIZE, DEFAULT_SIZE, PREFERRED_SIZE)
-							.addComponent(getInteractionNumberTxt(), PREFERRED_SIZE, DEFAULT_SIZE, PREFERRED_SIZE)
+							.addComponent(samplingRateLbl, PREFERRED_SIZE, DEFAULT_SIZE, PREFERRED_SIZE)
+							.addComponent(getSamplingRateLblTxt(), PREFERRED_SIZE, DEFAULT_SIZE, PREFERRED_SIZE)
 							.addComponent(derridaButton, PREFERRED_SIZE, DEFAULT_SIZE, PREFERRED_SIZE)
 					)
 			);
@@ -356,19 +356,19 @@ public class RNAResultsPanel extends JPanel implements CytoPanelComponent {
 		return derridaTxt;
 	}*/
 	
-	private JFormattedTextField getInteractionNumberTxt() {
-		if (interacionNumberTxt == null) {
-			interacionNumberTxt = new JFormattedTextField(new DecimalFormat("#0"));
-			interacionNumberTxt.setColumns(10);
-			interacionNumberTxt.setValue(interactionNumber);
-			interacionNumberTxt.setHorizontalAlignment(SwingConstants.LEADING);
-			interacionNumberTxt.addPropertyChangeListener("value", new FormattedTextFieldAction());
-			interacionNumberTxt.setToolTipText("<html>The number of times that two states<br>" + 
+	private JFormattedTextField getSamplingRateLblTxt() {
+		if (samplingRateTxt == null) {
+			samplingRateTxt = new JFormattedTextField(new DecimalFormat("#0"));
+			samplingRateTxt.setColumns(10);
+			samplingRateTxt.setValue(samplingRate);
+			samplingRateTxt.setHorizontalAlignment(SwingConstants.LEADING);
+			samplingRateTxt.addPropertyChangeListener("value", new FormattedTextFieldAction());
+			samplingRateTxt.setToolTipText("<html>The number of times that two states<br>" + 
 												"of the States Transition network<br>" + 
 												"are sorted out</html>");
 		}
 		
-		return interacionNumberTxt;
+		return samplingRateTxt;
 	}
 	
 	/********************************************************************************************************************/	
@@ -385,7 +385,7 @@ public class RNAResultsPanel extends JPanel implements CytoPanelComponent {
 			ArrayList<Integer> estadoB = new ArrayList<Integer>();
 			double resX = 0, resY = 0, x, y;
 			
-			for(int i = 0; i < interactionNumber; i++){
+			for(int i = 0; i < samplingRate; i++){
 				estadoA = devolveBinariosDerrida(numGenes, qntEstados);
 				//System.out.println("estadoA: " + estadoA);
 				estadoB = devolveBinariosDerrida(numGenes, qntEstados);
@@ -489,16 +489,16 @@ public class RNAResultsPanel extends JPanel implements CytoPanelComponent {
 			String message = "The value you have entered is invalid.\n";
 			boolean invalid = false;
 
-			if (source == interacionNumberTxt) {
-				Number value = (Number) interacionNumberTxt.getValue();
+			if (source == samplingRateTxt) {
+				Number value = (Number) samplingRateTxt.getValue();
 				
 				if ((value != null) && (value.intValue() > 1)) {
-					rnaUtil.getCurrentParameters().setInteractionNumber(value.intValue());
-					interactionNumber = rnaUtil.getCurrentParameters().getInteractionNumber();
+					rnaUtil.getCurrentParameters().setSamplingRate(value.intValue());
+					samplingRate = rnaUtil.getCurrentParameters().getSamplingRate();
 				} else {
 					source.setValue((qntEstados/2));
-					interactionNumber = qntEstados/2;
-					message += "The number of interactions must be greater than 1.";
+					samplingRate = qntEstados/2;
+					message += "The sampling rate must be greater than 1.";
 					invalid = true;
 				}
 			} 

@@ -8,7 +8,7 @@ public class RNAParameterSet {
     public File file;
 	public boolean optGeneInt;
    	public boolean optStatesTrans;
-   	public int interactionNumber; /*The number of times that two states are sorted out*/
+   	public int samplingRate; /*The number of times that two states are sorted out*/
 	public Double derridaCoefficient /*Identify turbulent behavior (greater than 0: chaotic behavior | equals 0: critical behavior | less than 0: frozen behavior)*/;
    	
 	public RNAParameterSet() {
@@ -41,12 +41,12 @@ public class RNAParameterSet {
 		this.optStatesTrans = optStatesTrans;
 	}
 	
-   	public int getInteractionNumber() {
-		return interactionNumber;
+   	public int getSamplingRate() {
+		return samplingRate;
 	}
 
-	public void setInteractionNumber(int interactionNumber) {
-		this.interactionNumber = interactionNumber;
+	public void setSamplingRate(int samplingRate) {
+		this.samplingRate = samplingRate;
 	}
 	
 	public Double getDerridaCoefficient() {
@@ -70,13 +70,13 @@ public class RNAParameterSet {
 	 * @param optGeneInt show the network of gene interaction
 	 * @param optStatesTrans show the network of states transition
 	 * @param file file that creates the network
-	 * @param derridaCoefficient number of interactions to calculate network behavior (used only in the results panel)
+	 * @param derridaCoefficient number of iterations to calculate network behavior (used only in the results panel)
 	 */
-	public void setAllAlgorithmParams(boolean optGeneInt, boolean optStatesTrans, File file, int interactionNumber, Double derridaCoefficient) {
+	public void setAllAlgorithmParams(boolean optGeneInt, boolean optStatesTrans, File file, int samplingRate, Double derridaCoefficient) {
    		this.optGeneInt = optGeneInt;
    		this.optStatesTrans = optStatesTrans;
    		this.file = file;
-   		this.interactionNumber = interactionNumber;
+   		this.samplingRate = samplingRate;
    		this.derridaCoefficient = derridaCoefficient;
 	}
 	
