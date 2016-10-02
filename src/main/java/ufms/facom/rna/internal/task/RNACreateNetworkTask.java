@@ -122,7 +122,7 @@ public class RNACreateNetworkTask extends AbstractTask {
 		}
 		
         //Título da tarefa principal
-		taskMonitor.setTitle("Generating/Analysing Network");
+		taskMonitor.setTitle("Generating/Analyzing Network");
 		taskMonitor.setProgress(0.001);
 		taskMonitor.setStatusMessage("Generating Network");
 
@@ -237,7 +237,7 @@ public class RNACreateNetworkTask extends AbstractTask {
 				//nome binario (caso algum dia precise usar)
 				//redeEstados.getDefaultNodeTable().getRow(node.getSUID()).set("name", String.format("%"+numGenes+"s", Integer.toBinaryString(i)).replace(' ', '0')); 
 			//nome decimal
-			redeEstados.getDefaultNodeTable().getRow(node.getSUID()).set("name", "Node " + i);	
+			redeEstados.getDefaultNodeTable().getRow(node.getSUID()).set("name", Integer.toString(i+1));	
 			//Adiciona os nos em ordem (mesma coisa do suidsNodes)
 			suidsEstados.add(node.getSUID()); 
 		}
@@ -272,7 +272,7 @@ public class RNACreateNetworkTask extends AbstractTask {
 		if (interrupted) return;
 		
 		taskMonitor.setProgress(0.01);
-		taskMonitor.setStatusMessage("Analysing Network");
+		taskMonitor.setStatusMessage("Analyzing Network");
 		
 		//Inicializando o array nodes
 		nodes = new ArrayList<Integer>();	
@@ -763,6 +763,6 @@ public class RNACreateNetworkTask extends AbstractTask {
 	 * @return human readable task title.
 	 */
 	public String getTitle() {
-		return "Generating/Analysing Network";
+		return "Generating/Analyzing Network";
 	}
 }

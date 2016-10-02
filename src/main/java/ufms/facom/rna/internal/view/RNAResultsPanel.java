@@ -199,7 +199,7 @@ public class RNAResultsPanel extends JPanel implements CytoPanelComponent {
 	@SuppressWarnings("serial")
 	private class ResultsTableModel extends AbstractTableModel {
 
-		private final String[] columnNames = { "Basins of Attraction", "Sizes of the Basins", "Attractors" };
+		private final String[] columnNames = { "Basin of Attraction ID", "Basin Size", "Attractor Size" };
 		private final Object[][] data; // the actual table data
 
 		public ResultsTableModel() {
@@ -282,7 +282,7 @@ public class RNAResultsPanel extends JPanel implements CytoPanelComponent {
 	private JPanel getBottomPnl() {
 		if (bottomPnl == null) {
 			bottomPnl = new JPanel();
-			bottomPnl.setBorder(UIUtil.createTitledBorder("States Transition Network Informations"));
+			bottomPnl.setBorder(UIUtil.createTitledBorder("Network Summary"));
 			
 			maxEntropyLbl = new JLabel("Maximum Entropy: " + formatter.format(maxEntropy));
 			maxEntropyLbl.setToolTipText("<html>The maximum entropy possible of the States Transition Network.</html>");
@@ -304,7 +304,7 @@ public class RNAResultsPanel extends JPanel implements CytoPanelComponent {
 			samplingRateLbl.setToolTipText(getSamplingRateLblTxt().getToolTipText());
 			
 			// The Derrida button
-			final JButton derridaButton = new JButton("Calculate Derrida Coefficient");
+			final JButton derridaButton = new JButton("Compute Derrida Coefficient");
 			derridaButton.setActionCommand("change");
 			derridaButton.addActionListener(new DerridaAction());
 			derridaButton.setToolTipText("Calculates the derrida coefficient");

@@ -89,9 +89,9 @@ public class RNAMainPanel extends JPanel implements CytoPanelComponent {
 			paramsPnl = new JPanel();
 			paramsPnl.setBorder(UIUtil.createTitledBorder("Create Network View"));
 			
-			final JCheckBox geneInteractionCkb = new JCheckBox("gene interaction");
+			final JCheckBox geneInteractionCkb = new JCheckBox("Gene regulatory network");
 			geneInteractionCkb.addItemListener(new RNAMainPanel.OptGeneIntCheckBoxAction());
-			final JCheckBox statesTransitionCkb = new JCheckBox("states transition");
+			final JCheckBox statesTransitionCkb = new JCheckBox("State transition diagram");
 			statesTransitionCkb.addItemListener(new RNAMainPanel.OptStatesTransCheckBoxAction());
 			
 			final JLabel showLabel = new JLabel("Show view:");
