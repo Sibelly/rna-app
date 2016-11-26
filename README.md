@@ -31,5 +31,5 @@ Besides that visualization we also generate the states transition network, that 
 
 And the app computes some informations from the states transition network like the **entropy** and the **derrida coefficient**. These informations is shown in the results panel.
 
-The app is avaliable for download in the [http://apps.cytoscape.org/apps/rna Cytoscape App Store].
+The app is avaliable for download in the Cytoscape App Store - http://apps.cytoscape.org/apps/rna.
 
